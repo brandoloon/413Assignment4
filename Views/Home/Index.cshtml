@@ -1,0 +1,64 @@
+﻿@model IEnumerable<Assignment4.Models.Restaurant>
+
+@{
+    ViewData["Title"] = "Restaurants";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1 class="text-center">Top 5 Restauraunts</h1>
+
+<p>
+    <a asp-action="Suggestion">Make a Suggestion</a>
+</p>
+<table class="table table-dark table-striped">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Rank)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FavoriteDish)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Address)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Phone)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Link)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (Restaurant item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Rank)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FavoriteDish)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Address)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Phone)
+            </td>
+            <td>
+                @if (item.Link != "Coming soon.")
+                {
+                    <a class="text-light" href="@Html.DisplayFor(modelItem => item.Link)">@Html.DisplayFor(modelItem => item.Link)</a>
+                }
+                else @Html.DisplayFor(modelItem => item.Link)
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
