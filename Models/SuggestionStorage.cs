@@ -7,6 +7,8 @@ namespace Assignment4.Models
 {
     public static class SuggestionStorage
     {
+        // class for storing the suggestions
+
         private static List<Suggestion> suggestions = new List<Suggestion>();
 
         public static IEnumerable<Suggestion> Suggestions => suggestions;

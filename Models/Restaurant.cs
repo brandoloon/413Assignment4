@@ -8,23 +8,25 @@ namespace Assignment4.Models
 {
     public class Restaurant
     {
+        // Constructor
         public Restaurant(int rank)
         {
             Rank = rank;
         }
         [Required]
-        public string Name { get; set; }
+        public string Name { get; set; } // Restaurant Name is required
         [Required]
-        public int Rank { get; }
-        public string? FavoriteDish { get; set; } = "It's all tasty!";
+        public int Rank { get; } // Rank can only be set via the constructor
+        public string? FavoriteDish { get; set; } = "It's all tasty!"; // FavoriteDish defaults to It's all tasty
         [Required]
-        public string Address { get; set; }
+        public string Address { get; set; } // The Restaurant's address is required
         [RegularExpression(@"^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$", ErrorMessage = "Please enter a valid phone number")]
-        public string? Phone { get; set; }
-        public string? Link { get; set; } = "Coming soon.";
+        public string? Phone { get; set; } // Phone number requires a certain format
+        public string? Link { get; set; } = "Coming soon."; // Link defaults to Coming soon.
 
         public static Restaurant[] GetRestaurants()
         {
+            // Create top five restaurants
             Restaurant r1 = new Restaurant(1)
             {
                 Name = "K's Kitchen",

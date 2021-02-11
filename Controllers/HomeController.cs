@@ -25,12 +25,13 @@ namespace Assignment4.Controllers
 
         public IActionResult Index()
         {
+            // Create and populate the list using the array returned form GetRestaurants
             List<Restaurant> restaurants = new List<Restaurant>();
             foreach(Restaurant r in Restaurant.GetRestaurants())
             {
                 restaurants.Add(r);
             }
-            return View(restaurants);
+            return View(restaurants); // pass the list to the view
         }
 
         public IActionResult Suggestion()
@@ -40,8 +41,8 @@ namespace Assignment4.Controllers
         [HttpPost]
         public IActionResult Suggestion(Suggestion s)
         {
-            SuggestionStorage.AddSuggestion(s);
-            return View("Success");
+            SuggestionStorage.AddSuggestion(s); // Add a suggestion to the storage upon submission
+            return View("Success"); // Return success
         }
         public IActionResult Success()
         {
@@ -49,7 +50,7 @@ namespace Assignment4.Controllers
         }
         public IActionResult Suggestions()
         {
-            return View(SuggestionStorage.Suggestions);
+            return View(SuggestionStorage.Suggestions); // pass stored suggestions to view
         }
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
